@@ -15,7 +15,7 @@ int *shared_data;
 
 void reader(int id)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 100; i++)
     {
         cond_lock(&cv);
 
@@ -42,7 +42,7 @@ void reader(int id)
 
 void writer(int id)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 100; i++)
     {
         cond_lock(&cv);
 
@@ -83,7 +83,7 @@ int main()
     shared_data[1] = 0;
     shared_data[2] = 0;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 7; i++)
     {
         pid_t pid = fork();
         if (pid == -1)
@@ -91,10 +91,10 @@ int main()
 
         if (pid == 0)
         {
-            if (i < 3)
+            if (i < 4)
                 reader(i);
             else
-                writer(i - 3);
+                writer(i - 4);
 
             shmdt(shared_data);
             return 0;
