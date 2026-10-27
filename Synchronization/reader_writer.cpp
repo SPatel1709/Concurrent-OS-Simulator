@@ -101,7 +101,7 @@ int main()
         }
     }
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 7; i++)
         wait(NULL);
 
     cout << "Final value = " << shared_data[2] << endl;
