@@ -169,9 +169,8 @@ void run_test(LRU &lru, int type)
                 page = rand() % 256;
         }
 
-        long long address = (long long)page * PAGE_SZ + (i % 32);
         memAccess++;
-        lru.access_page((int)(address / PAGE_SZ));
+        lru.access_page((int)(page));
     }
 }
 
