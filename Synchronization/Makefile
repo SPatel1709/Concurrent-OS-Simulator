@@ -1,20 +1,13 @@
 CXX = g++
 CXXFLAGS = -Wall
 
-compile: manager demon nomad
+compile: reader_writer
 
-manager: manager.cpp cond.c
-	$(CXX) $(CXXFLAGS) -o manager manager.cpp
+reader_writer: reader_writer.cpp cond.c
+	$(CXX) $(CXXFLAGS) -o reader_writer reader_writer.cpp
 
-demon: demon.cpp cond.c
-	$(CXX) $(CXXFLAGS) -o demon demon.cpp
-
-nomad: nomad.cpp cond.c
-	$(CXX) $(CXXFLAGS) -o nomad nomad.cpp
-
-demorun:
-	./demon 4 & ./nomad 5
-
+run: reader_writer
+	./reader_writer
 
 clean:
-	rm -f manager demon nomad
+	rm -f reader_writer
